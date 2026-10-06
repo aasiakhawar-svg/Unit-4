@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Detective Carbon: Hydrocarbon City</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff7e6;--card:#fff;--ink:#1d1b2e;--mut:#5b5870;--acc:#e8553d;--acc2:#2b57b0;--ans:#e9f5ec;--line:#1d1b2e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15141f;--card:#211f31;--ink:#f3efe6;--mut:#aaa6c0;--acc:#ff7a62;--acc2:#7da2ff;--ans:#1e3a2a;--line:#f3efe6}}
+:root[data-theme="dark"]{--bg:#15141f;--card:#211f31;--ink:#f3efe6;--mut:#aaa6c0;--acc:#ff7a62;--acc2:#7da2ff;--ans:#1e3a2a;--line:#f3efe6}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Trebuchet MS",system-ui,sans-serif;line-height:1.5}
+header{padding:32px 18px 12px;text-align:center}
+h1{font-size:clamp(1.8rem,6vw,3rem);margin:0;letter-spacing:-1px}
+h1 span{color:var(--acc)}
+header p{color:var(--mut);max-width:620px;margin:8px auto 0}
+main{max-width:980px;margin:0 auto;padding:12px 14px 40px;display:grid;gap:22px}
+.panel{background:var(--card);border:3px solid var(--line);border-radius:14px;box-shadow:6px 6px 0 var(--line);overflow:hidden}
+.top{display:flex;align-items:center;gap:10px;background:var(--acc2);color:#fff;padding:8px 14px;font-weight:700}
+.top .n{background:#fff;color:var(--acc2);border-radius:50%;width:30px;height:30px;display:grid;place-items:center;flex:none}
+.top small{margin-left:auto;font-weight:400;opacity:.9;text-align:right}
+.body{padding:14px 16px}
+.scene{font-style:italic;color:var(--mut);margin:0 0 10px}
+.say{background:var(--bg);border:2px solid var(--line);border-radius:14px;padding:8px 12px;margin:8px 0;position:relative}
+.say b{color:var(--acc)}
+.q{margin:12px 0 6px;font-weight:700}
+details{margin:6px 0;border-radius:10px;border:2px dashed var(--acc)}
+summary{cursor:pointer;padding:8px 12px;font-weight:700;color:var(--acc)}
+details[open]{background:var(--ans);border-style:solid}
+details div{padding:0 14px 10px}
+code,.f{font-family:ui-monospace,Menlo,monospace;background:rgba(127,127,127,.18);padding:1px 6px;border-radius:5px;white-space:nowrap}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;margin:8px 0;font-size:.92rem}
+td,th{border:2px solid var(--line);padding:4px 10px;text-align:left}
+.end{text-align:center;padding:14px;font-weight:700}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;display:flex;gap:10px;align-items:center;justify-content:center;background:var(--card);border-bottom:3px solid var(--line);padding:8px;flex-wrap:wrap}
+.bar b{font-size:1.5rem;font-variant-numeric:tabular-nums;min-width:90px;text-align:center}
+button{font:inherit;font-weight:700;border:2px solid var(--line);border-radius:8px;background:var(--acc);color:#fff;padding:4px 12px;cursor:pointer}
+.plan{max-width:620px;margin:14px auto 0;text-align:left}
+.plan td:last-child{text-align:right;white-space:nowrap}
+.bonus .top{background:var(--acc)}
+</style></head><body>
+<header><h1>Detective <span>Carbon</span> &amp; the Hydrocarbon City Mysteries</h1>
+<p>A 90-minute study mission through Topic 4. Work through the cases in order, try each question before tapping to reveal the case file, and keep an eye on the clock.</p></header>
+<div class="bar"><span>Mission clock</span><b id="t">90:00</b><button onclick="go()" id="g">Start</button><button onclick="rs()">Reset</button></div>
+<header style="padding-top:0"><div class="scroll plan"><table style="width:100%"><tr><th>Block</th><th>Time</th></tr>
+<tr><td>Warm-up quick-fire</td><td>3 min</td></tr>
+<tr><td>Cases 1-3: formulae, naming, fuels, substitution</td><td>16 min</td></tr>
+<tr><td>Cases 4-5: radicals, boiling points</td><td>14 min</td></tr>
+<tr><td>Cases 6-7: cracking and reforming</td><td>15 min</td></tr>
+<tr><td>Cases 8-9: Suspect Y and the line-up</td><td>18 min</td></tr>
+<tr><td>Bonus levels A-D (new)</td><td>20 min</td></tr>
+<tr><td>Final boss battle (new)</td><td>4 min</td></tr>
+<tr><td><b>Total</b></td><td><b>90 min</b></td></tr></table></div></header>
+<main>
+
+<section class="panel bonus"><div class="top"><span class="n">W</span>Warm-up at the Gates<small>3 min &middot; quick-fire</small></div><div class="body">
+<p class="scene">Before entering Hydrocarbon City, the guard asks five true-or-false questions. Answer out loud.</p>
+<div class="say">1. Alkanes are unsaturated.<br>2. Cracking produces alkenes.<br>3. Longer alkane chains have higher boiling points.<br>4. A radical has an unpaired electron.<br>5. The formula of methane is C<sub>2</sub>H<sub>6</sub>.</div>
+<details><summary>Check answers</summary><div>1 False (saturated). 2 True. 3 True. 4 True. 5 False (CH<sub>4</sub>).</div></details></div></section>
+<section class="panel"><div class="top"><span class="n">1</span>The Locked Lab<small>5 min &middot; Q1, Q2</small></div><div class="body">
+<p class="scene">Night. Detective Carbon finds a note taped to the lab door: a drawing of C with four CH<sub>3</sub>-type arms.</p>
+<div class="say"><b>Carbon:</b> It shows how atoms are arranged, but the C&ndash;H bonds are not all drawn. What kind of formula is this?</div>
+<details><summary>Case file: Q1</summary><div><b>D, structural formula.</b> It shows the groups on each carbon but not every bond (a displayed formula would draw them all).</div></details>
+<div class="say"><b>Assistant:</b> The suspects all belong to one family, a homologous series. What must be true of them?</div>
+<details><summary>Case file: Q2</summary><div><b>C, they contain the same functional group.</b> Members differ by CH<sub>2</sub> (not CH<sub>3</sub>), have similar chemical properties and gradually changing physical properties.</div></details>
+</div></section>
+
+<section class="panel"><div class="top"><span class="n">2</span>The Name Tag Mix-up<small>5 min &middot; Q3</small></div><div class="body">
+<p class="scene">A chlorinated suspect refuses to give its name. Its chain: <span class="f">ClCH<sub>2</sub>&ndash;CHCl&ndash;CH<sub>2</sub>&ndash;CH<sub>3</sub></span></p>
+<div class="say"><b>Carbon:</b> Four carbons in a row, no double bond, two chlorines on the first two carbons.</div>
+<details><summary>Case file: Q3</summary><div><b>B, 1,2-dichlorobutane.</b> "-ane" because there are only single bonds (so not "-ene"), and the Cl atoms sit on carbons 1 and 2.</div></details>
+</div></section>
+
+<section class="panel"><div class="top"><span class="n">3</span>Fuel Market Heist<small>6 min &middot; Q4, Q5</small></div><div class="body">
+<p class="scene">Someone stole the "carbon neutral" sign from the fuel stalls: ethanol, natural gas, petrol, wood.</p>
+<details><summary>Case file: Q4</summary><div><b>D, wood.</b> Trees absorb as much CO<sub>2</sub> while growing as is released on burning. Ethanol from biomass can also be argued, but wood is the intended answer here.</div></details>
+<div class="say"><b>Carbon:</b> Then a halogen sneaks in and swaps an H. Which equation is the swap (substitution)?</div>
+<details><summary>Case file: Q5</summary><div><b>C:</b> <span class="f">C<sub>2</sub>H<sub>6</sub> + F<sub>2</sub> &rarr; C<sub>2</sub>H<sub>5</sub>F + HF</span>. One H is replaced by F. A is hydration, B is addition, D is dehydrogenation.</div></details>
+</div></section>
+
+<section class="panel"><div class="top"><span class="n">4</span>Radical Chain Chase<small>6 min &middot; Q6</small></div><div class="body">
+<p class="scene">Under UV light, chlorine molecules split into radicals and race through the city.</p>
+<div class="say"><b>Carbon:</b> The chase ends when two radicals meet and no new radical is made. Which step is that?</div>
+<details><summary>Case file: Q6</summary><div><b>A:</b> <span class="f">&bull;CH<sub>2</sub>Cl + Cl&bull; &rarr; CH<sub>2</sub>Cl<sub>2</sub></span>. Two radicals combine into a molecule: termination. C and D are propagation, and B is not a real step in this reaction.</div></details>
+</div></section>
+
+<section class="panel"><div class="top"><span class="n">5</span>The Boiling Point Ladder<small>8 min &middot; Q7 a-b</small></div><div class="body">
+<p class="scene">Detective Carbon climbs a ladder of alkanes, and the temperature rises with every rung.</p>
+<div class="scroll"><table><tr><th>Alkane</th><th>Formula</th><th>b.p. / K</th></tr><tr><td>heptane</td><td>C<sub>7</sub>H<sub>16</sub></td><td>372</td></tr><tr><td>octane</td><td>?</td><td>399</td></tr><tr><td>nonane</td><td>C<sub>9</sub>H<sub>20</sub></td><td>?</td></tr><tr><td>decane</td><td>C<sub>10</sub>H<sub>22</sub></td><td>447</td></tr></table></div>
+<details><summary>(a) Formula of octane</summary><div><span class="f">C<sub>8</sub>H<sub>18</sub></span> (C<sub>n</sub>H<sub>2n+2</sub>).</div></details>
+<details><summary>(b)(i) Explain the trend</summary><div>Longer chains have more electrons and a larger surface area, so stronger London (induced dipole&ndash;dipole) forces between molecules. More energy is needed to overcome them, so the boiling temperature rises.</div></details>
+<details><summary>(b)(ii) Predict nonane</summary><div>About <b>423 K</b>, roughly halfway between octane (399) and decane (447). Anything near 420&ndash;425 K is sensible.</div></details>
+</div></section>
+
+<section class="panel"><div class="top"><span class="n">6</span>The Cracking Machine<small>7 min &middot; Q7 c</small></div><div class="body">
+<p class="scene">A giant machine at the refinery smashes long chains into shorter, more useful ones.</p>
+<details><summary>(c)(i) Crack decane into octane + ethene</summary><div><span class="f">C<sub>10</sub>H<sub>22</sub> &rarr; C<sub>8</sub>H<sub>18</sub> + C<sub>2</sub>H<sub>4</sub></span></div></details>
+<details><summary>(c)(ii) Ethene to ethanol</summary><div><span class="f">C<sub>2</sub>H<sub>4</sub> + H<sub>2</sub>O &rlarr; C<sub>2</sub>H<sub>5</sub>OH</span><br>Conditions: steam, about <b>300 &deg;C</b>, about <b>60&ndash;70 atm</b>, phosphoric acid catalyst (on a silica support).</div></details>
+</div></section>
+
+<section class="panel"><div class="top"><span class="n">7</span>The Reforming Workshop<small>8 min &middot; Q7 d</small></div><div class="body">
+<p class="scene">Straight chains walk in, and bent, branched or ringed molecules walk out.</p>
+<details><summary>(d)(i) Decane &rarr; 2,3-dimethyloctane</summary><div>Skeletal formulae: a 10-carbon zigzag on the left, an arrow, then an 8-carbon zigzag with a methyl branch on both carbon 2 and carbon 3. The molecular formula stays <span class="f">C<sub>10</sub>H<sub>22</sub></span>: it is only rearranged.</div></details>
+<details><summary>(d)(ii) Heptane &rarr; methylcyclohexane</summary><div><span class="f">C<sub>7</sub>H<sub>16</sub> &rarr; C<sub>7</sub>H<sub>14</sub> + H<sub>2</sub></span><br>Draw a 7-carbon zigzag, then a six-carbon ring with one CH<sub>3</sub> branch, plus H<sub>2</sub>. (Don't forget the hydrogen!)</div></details>
+<details><summary>(d)(iii) Why reform for petrol?</summary><div>Branched and cyclic alkanes burn more smoothly, which means a higher octane rating and less engine knocking (auto-ignition) than straight chains.</div></details>
+</div></section>
+
+<section class="panel"><div class="top"><span class="n">8</span>Who Is Suspect Y?<small>10 min &middot; Q8</small></div><div class="body">
+<p class="scene">A hydrocarbon, 85.7% carbon by mass, hides in the shadows. M<sub>r</sub> = 56.</p>
+<details><summary>(a)(i) Empirical formula</summary><div>%H = 14.3.<br>C: 85.7 &divide; 12 = 7.14 mol. H: 14.3 &divide; 1 = 14.3 mol.<br>Ratio C:H = 1 : 2, so the empirical formula is <span class="f">CH<sub>2</sub></span>.</div></details>
+<details><summary>(a)(ii) Molecular formula</summary><div>M<sub>r</sub> of CH<sub>2</sub> = 14. 56 &divide; 14 = 4, so the formula is (CH<sub>2</sub>)<sub>4</sub> = <span class="f">C<sub>4</sub>H<sub>8</sub></span>.</div></details>
+<details><summary>(b) The six isomers (4 unsaturated, 2 saturated)</summary><div>
+<b>Unsaturated (contain C=C):</b><br>
+1. but-1-ene: CH<sub>2</sub>=CH&ndash;CH<sub>2</sub>&ndash;CH<sub>3</sub><br>
+2. <i>cis</i>-but-2-ene: CH<sub>3</sub> groups on the same side of C=C<br>
+3. <i>trans</i>-but-2-ene: CH<sub>3</sub> groups on opposite sides<br>
+4. 2-methylpropene: CH<sub>2</sub>=C(CH<sub>3</sub>)&ndash;CH<sub>3</sub><br>
+<b>Saturated (rings):</b><br>
+5. cyclobutane: a ring of 4 C atoms<br>
+6. methylcyclopropane: a 3-C ring with a CH<sub>3</sub><br>
+<i>When drawing displayed formulae, show every C&ndash;H bond. The question says "five" but lists six isomers, so draw all six to be safe.</i></div></details>
+</div></section>
+
+<section class="panel"><div class="top"><span class="n">9</span>The Final Line-up<small>8 min &middot; Q9</small></div><div class="body">
+<p class="scene">Four suspects stand in a line: <b>A</b> (4 C), <b>B</b> (5 C), <b>C</b> (6 C, bent) and <b>D</b> (6 C, bent differently).</p>
+<details><summary>(a) Homologous series</summary><div><b>Alkanes.</b> They contain only C&ndash;C and C&ndash;H single bonds (saturated), with general formula C<sub>n</sub>H<sub>2n+2</sub>.</div></details>
+<details><summary>(b) Which formulae show only one compound?</summary><div><b>C and D</b> are the same compound: both are unbranched hexane, just drawn with the chain bent in different places. Bends in a drawing don't change the order the atoms are joined. A (butane) and B (pentane) are different compounds from each other and from hexane.</div></details>
+<details><summary>(c) Isomers of B (pentane)</summary><div>
+<b>2-methylbutane:</b> CH<sub>3</sub>&ndash;CH(CH<sub>3</sub>)&ndash;CH<sub>2</sub>&ndash;CH<sub>3</sub><br>
+<b>2,2-dimethylpropane:</b> CH<sub>3</sub>&ndash;C(CH<sub>3</sub>)<sub>2</sub>&ndash;CH<sub>3</sub></div></details>
+</div></section>
+
+
+<section class="panel bonus"><div class="top"><span class="n">A</span>The Naming Dojo<small>4 min &middot; bonus</small></div><div class="body">
+<p class="scene">Sensei Alkane shows four cards. Give the IUPAC name for each.</p>
+<div class="say">1. CH<sub>3</sub>&ndash;CH(CH<sub>3</sub>)&ndash;CH<sub>2</sub>&ndash;CH<sub>3</sub><br>2. CH<sub>3</sub>CH<sub>2</sub>&ndash;CH(CH<sub>3</sub>)&ndash;CH<sub>2</sub>CH<sub>3</sub><br>3. CH<sub>3</sub>&ndash;CH=CH&ndash;CH<sub>2</sub>&ndash;CH<sub>3</sub><br>4. CH<sub>3</sub>CH<sub>2</sub>CH<sub>2</sub>Cl</div>
+<details><summary>Reveal</summary><div>1 <b>2-methylbutane</b>. 2 <b>3-methylpentane</b> (longest chain is 5 C, branch on C3). 3 <b>pent-2-ene</b>. 4 <b>1-chloropropane</b>.</div></details></div></section>
+
+<section class="panel bonus"><div class="top"><span class="n">B</span>The Combustion Chamber<small>6 min &middot; bonus</small></div><div class="body">
+<p class="scene">A furnace roars. One door has plenty of oxygen, the other very little.</p>
+<div class="q">1. Write the equation for complete combustion of propane.<br>2. Write an equation for incomplete combustion of methane to give CO.<br>3. Why is CO dangerous?<br>4. 2.2 g of propane burns completely. What volume of CO<sub>2</sub> forms at RTP (24 dm<sup>3</sup> mol<sup>-1</sup>)?</div>
+<details><summary>Reveal</summary><div>1 <span class="f">C<sub>3</sub>H<sub>8</sub> + 5O<sub>2</sub> &rarr; 3CO<sub>2</sub> + 4H<sub>2</sub>O</span><br>2 <span class="f">2CH<sub>4</sub> + 3O<sub>2</sub> &rarr; 2CO + 4H<sub>2</sub>O</span><br>3 CO binds to haemoglobin, stopping blood carrying oxygen. It is colourless and odourless.<br>4 M<sub>r</sub> propane = 44, so 2.2 g = 0.05 mol. CO<sub>2</sub> = 0.15 mol, and 0.15 &times; 24 = <b>3.6 dm<sup>3</sup></b>.</div></details></div></section>
+
+<section class="panel bonus"><div class="top"><span class="n">C</span>The Radical Trial<small>6 min &middot; bonus</small></div><div class="body">
+<p class="scene">The court wants the full story of methane and chlorine in UV light, step by step.</p>
+<div class="q">1. Name the mechanism. 2. Write the initiation step. 3. Write two propagation steps. 4. Write one termination step. 5. Why is a mixture of products formed?</div>
+<details><summary>Reveal</summary><div>1 Free-radical substitution.<br>2 <span class="f">Cl<sub>2</sub> &rarr; 2Cl&bull;</span> (homolytic fission, UV light).<br>3 <span class="f">Cl&bull; + CH<sub>4</sub> &rarr; &bull;CH<sub>3</sub> + HCl</span> and <span class="f">&bull;CH<sub>3</sub> + Cl<sub>2</sub> &rarr; CH<sub>3</sub>Cl + Cl&bull;</span><br>4 <span class="f">&bull;CH<sub>3</sub> + Cl&bull; &rarr; CH<sub>3</sub>Cl</span> (or Cl&bull; + Cl&bull; &rarr; Cl<sub>2</sub>, or 2&bull;CH<sub>3</sub> &rarr; C<sub>2</sub>H<sub>6</sub>)<br>5 Further substitution gives CH<sub>2</sub>Cl<sub>2</sub>, CHCl<sub>3</sub> and CCl<sub>4</sub>, and termination can make ethane.</div></details></div></section>
+
+<section class="panel bonus"><div class="top"><span class="n">D</span>The Addition Detective<small>4 min &middot; bonus</small></div><div class="body">
+<p class="scene">Alkenes have a double-bond secret that alkanes don't.</p>
+<div class="q">1. What happens when ethene meets bromine water? Write the equation.<br>2. Which product mainly forms from propene + HBr?</div>
+<details><summary>Reveal</summary><div>1 Orange bromine water turns colourless: <span class="f">C<sub>2</sub>H<sub>4</sub> + Br<sub>2</sub> &rarr; C<sub>2</sub>H<sub>4</sub>Br<sub>2</sub></span> (1,2-dibromoethane). This is the test for unsaturation.<br>2 <b>2-bromopropane</b> is the major product, because the more stable secondary carbocation forms. 1-bromopropane is minor.</div></details></div></section>
+
+<section class="panel bonus"><div class="top"><span class="n">&#9733;</span>Final Boss Battle<small>4 min &middot; mixed</small></div><div class="body">
+<p class="scene">The Boss fires six questions in a row. No notes!</p>
+<div class="say">1. General formula of alkenes?<br>2. Name the functional group in alkenes.<br>3. What does UV light do to Cl<sub>2</sub>?<br>4. M<sub>r</sub> of C<sub>4</sub>H<sub>8</sub>?<br>5. Name the isomer of butane.<br>6. How does a catalytic converter reduce pollution?</div>
+<details><summary>Defeat the Boss</summary><div>1 C<sub>n</sub>H<sub>2n</sub>. 2 C=C double bond. 3 Homolytic fission into two chlorine radicals. 4 56. 5 Methylpropane (2-methylpropane). 6 It converts CO and NO<sub>x</sub> into CO<sub>2</sub> and N<sub>2</sub> (and burns off unburnt hydrocarbons).</div></details></div></section>
+<div class="end">Mission complete in 90 minutes. Detective Carbon solves Topic 4. 🔍🧪</div>
+</main><script>
+var T=5400,id=null;function f(){var m=Math.floor(T/60),x=T%60;document.getElementById('t').textContent=(m<10?'0':'')+m+':'+(x<10?'0':'')+x}
+function go(){if(id){clearInterval(id);id=null;g.textContent='Resume';return}g.textContent='Pause';id=setInterval(function(){if(T>0){T--;f()}else{clearInterval(id);id=null;g.textContent='Done'}},1000)}
+function rs(){clearInterval(id);id=null;T=5400;f();g.textContent='Start'}
+</script></body></html>
